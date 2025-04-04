@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  backup-service:
+    build: .
+    volumes:
+      # Mount configuration from host
+      - ./backup_config.ini:/app/backup_config.ini
+      # Mount backup destination directory
+      - ./backups:/backups
+      # Mount logs directory 
+      - ./logs:/logs
+      # Mount data to backup (example paths - adjust as needed)
+      - ./data:/data
+    environment:
+      - TZ=UTC
+    # Schedule daily backups using cron in the container
+    # Or comment this out and use host system's cron instead
+    entrypoint: ["sh", "-c", "while true; do python /app/backup.py; sleep 86400; done"]
