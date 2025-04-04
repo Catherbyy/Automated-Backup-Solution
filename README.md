@@ -1,5 +1,3 @@
-# Automated-Backup-Solution
-
 # Automated Backup Solution
 
 This is a comprehensive backup solution built with Python and Docker that demonstrates Linux system administration and DevOps skills.
